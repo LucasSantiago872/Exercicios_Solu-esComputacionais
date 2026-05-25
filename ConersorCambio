@@ -1,0 +1,48 @@
+import javax.swing.JOptionPane;
+import java.util.Locale;
+import java.text.NumberFormat;
+
+public class Exercicios2 {
+    public static void main(String[]args)
+    {
+    double real = 0;
+    while (true)
+    {
+    String entrada = JOptionPane.showInputDialog("Digite o valor");
+    if(entrada == null)
+    {
+    JOptionPane.showMessageDialog(null, "entrada cancelada");
+    return;
+    }
+    try {
+        real =Double.parseDouble(entrada);
+        if(real > 0){
+            break;
+        } 
+        else {
+            JOptionPane.showMessageDialog(null, "Digite um valor acima de 0");
+        }
+    } catch (NumberFormatException erro){
+           JOptionPane.showMessageDialog(null, "Digite apenas numeros");
+            }
+    }
+            
+    double cambio = 5.04;
+    double dolar = real/cambio;
+    
+    Locale brasil = new Locale("pt", "br");
+    NumberFormat FormatarReal = NumberFormat.getCurrencyInstance(brasil);
+    
+    Locale eua = Locale.US;
+    NumberFormat FormatarDolar = NumberFormat.getCurrencyInstance(eua);
+    
+    JOptionPane.showMessageDialog(null, "Valor Original: " + FormatarReal.format(real));
+    JOptionPane.showMessageDialog(null, "Valor convertido: "+ FormatarDolar.format(dolar));
+   
+    
+    }
+    
+}
+
+
+
